@@ -13,7 +13,7 @@ export default function NavbarLink({ href = EMPTY_STRING, step = _0 }) {
 	return (
 		<Link href={href}>
 			<div
-				className={`${activeStyles} bg-transparent flex justify-center items-center text-body-m font-bold rounded-[50%] min-w-[33px] min-h-[33px] max-w-[min-content]`}
+				className={`${activeStyles} flex justify-center items-center text-body-m font-bold rounded-[50%] min-w-[33px] min-h-[33px] max-w-[min-content]`}
 			>
 				<p>{step}</p>
 			</div>
