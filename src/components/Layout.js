@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Header from './Header'
+import Footer from './Footer'
 
 import { _0 } from 'utils/constants'
 
@@ -33,13 +34,11 @@ export default function Layout({ title, children, description }) {
 					minHeight: `calc(100vh - ${pageHeight}px)`,
 				}}
 			>
-				<div className="bg-white mx-4 px-6 py-8 absolute left-0 right-0 top-[-75px]">
+				<div className="bg-white mx-4 px-6 py-8 absolute left-0 right-0 top-[-75px] rounded-[10px]">
 					{children}
 				</div>
 			</div>
-			<footer id="app-footer">
-				<p>FOOTER</p>
-			</footer>
+			<Footer />
 		</section>
 	)
 }
