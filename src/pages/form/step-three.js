@@ -1,7 +1,9 @@
+import Layout from 'components/Layout'
+
 export default function stepThree() {
 	return (
-		<div>
+		<Layout title="Form | Step - Three">
 			<h3>Step - Three</h3>
-		</div>
+		</Layout>
 	)
 }
