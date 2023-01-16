@@ -29,7 +29,7 @@ export default function Footer() {
 	return (
 		<footer
 			id="app-footer"
-			className={`${firstPageStyles} flex items-center p-4 min-h-[72px]`}
+			className={`${firstPageStyles} flex items-center p-4 min-h-[72px] z-50 relative`}
 		>
 			{!isFirstPage ? (
 				<p className="font-medium text-grey text-body-m" onClick={back}>

@@ -3,16 +3,24 @@ import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 
-import { _0 } from 'utils/constants'
+import {
+	MARGIN_FOOTER_MAIN_PAGE,
+	MARGIN_HEADER_MAIN_PAGE,
+	_0,
+} from 'utils/constants'
 
 export default function Layout({ title, children, description }) {
 	const [pageHeight, setPageHeight] = useState(_0)
+	const [footerHeight, setFooterHeight] = useState(_0)
 
 	const calculatePageHeight = () => {
 		const headerHeight = document.querySelector('#app-header').clientHeight
 		const footerHeight = document.querySelector('#app-footer').clientHeight
 
 		setPageHeight(headerHeight + footerHeight)
+		setFooterHeight(
+			footerHeight + MARGIN_FOOTER_MAIN_PAGE + MARGIN_HEADER_MAIN_PAGE
+		)
 	}
 
 	useEffect(() => {
@@ -34,7 +42,12 @@ export default function Layout({ title, children, description }) {
 					minHeight: `calc(100vh - ${pageHeight}px)`,
 				}}
 			>
-				<div className="bg-white mx-4 px-6 py-8 absolute left-0 right-0 top-[-75px] rounded-[10px]">
+				<div
+					style={{
+						maxHeight: `calc(100vh - ${footerHeight}px)`,
+					}}
+					className="bg-white mx-4 px-6 py-8 absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
+				>
 					{children}
 				</div>
 			</div>
