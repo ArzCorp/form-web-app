@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
@@ -6,10 +7,12 @@ import Footer from './Footer'
 import {
 	MARGIN_FOOTER_MAIN_PAGE,
 	MARGIN_HEADER_MAIN_PAGE,
+	NULL,
 	_0,
 } from 'utils/constants'
 
 export default function Layout({ title, children, description }) {
+	const { asPath } = useRouter()
 	const [pageHeight, setPageHeight] = useState(_0)
 	const [footerHeight, setFooterHeight] = useState(_0)
 
@@ -51,7 +54,7 @@ export default function Layout({ title, children, description }) {
 					{children}
 				</div>
 			</div>
-			<Footer />
+			<Footer hidden={asPath === '/success'} />
 		</section>
 	)
 }
