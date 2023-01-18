@@ -1,3 +1,13 @@
 html {
 	font-family: 'Ubuntu', sans-serif;
 }
+
+.h-main {
+	min-height: calc(100vh - 172px);
+}
+
+.bg-header {
+	background-image: url('/bg/bg-sidebar-mobile.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
