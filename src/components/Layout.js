@@ -13,25 +13,28 @@ import {
 
 export default function Layout({ title, children, description }) {
 	const { asPath } = useRouter()
-	const [pageHeight, setPageHeight] = useState(_0)
+	const [pageHeight, setPageHeight] = useState('100vh')
 	const [footerHeight, setFooterHeight] = useState(_0)
 
-	const calculatePageHeight = () => {
+	const setDesktopPageHeight = () => {
 		const headerHeight = document.querySelector('#app-header').clientHeight
 		const footerHeight = document.querySelector('#app-footer').clientHeight
+		const pageWidth = window.innerWidth
 
-		setPageHeight(headerHeight + footerHeight)
+		if (pageWidth >= 1024) return setPageHeight('auto')
+		setPageHeight(`calc(100vh - ${headerHeight + footerHeight}px)`)
 		setFooterHeight(
 			footerHeight + MARGIN_FOOTER_MAIN_PAGE + MARGIN_HEADER_MAIN_PAGE
 		)
 	}
 
 	useEffect(() => {
-		calculatePageHeight()
+		window.addEventListener('resize', setDesktopPageHeight)
+		setDesktopPageHeight()
 	}, [])
 
 	return (
-		<section>
+		<section className="lg:flex lg:h-screen lg:bg-very-light-grey lg:py-[105px] lg:px-[15%]">
 			<Head>
 				<title>{title}</title>
 				<meta name="description" content={description} />
@@ -40,16 +43,16 @@ export default function Layout({ title, children, description }) {
 			</Head>
 			<Header />
 			<div
-				className="bg-light relative"
+				className="bg-light lg:bg-white relative lg:w-full lg:h-auto lg:rounded-tr-[15px] lg:rounded-br-[15px]"
 				style={{
-					minHeight: `calc(100vh - ${pageHeight}px)`,
+					minHeight: pageHeight,
 				}}
 			>
 				<div
 					style={{
 						maxHeight: `calc(100vh - ${footerHeight}px)`,
 					}}
-					className="bg-white mx-4 px-6 py-8 absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
+					className="bg-white lg:ml-0 mx-4 px-6 lg:pb-0 py-8 lg:static absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
 				>
 					{children}
 				</div>

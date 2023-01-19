@@ -11,3 +11,7 @@ html {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.bg-header-desktop {
+	background-image: url('/bg/bg-sidebar-desktop.svg');
+}

@@ -34,7 +34,7 @@ export default function Footer({ hidden }) {
 	return (
 		<footer
 			id="app-footer"
-			className={`${firstPageStyles} ${hiddenStyles} items-center p-4 min-h-[72px] z-50 relative`}
+			className={`${firstPageStyles} ${hiddenStyles} lg:hidden items-center p-4 min-h-[72px] z-50 relative`}
 		>
 			{!isFirstPage ? (
 				<p className="font-medium text-grey text-body-m" onClick={back}>
