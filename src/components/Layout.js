@@ -53,10 +53,11 @@ export default function Layout({ title, children, description }) {
 						style={{
 							maxHeight: `calc(100vh - ${footerHeight}px)`,
 						}}
-						className="bg-white lg:ml-0 mx-4 px-6 lg:pb-0 lg:px-[100px] lg:pt-[56px] py-8 lg:static absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
+						className="bg-white lg:ml-0 mx-4 px-6 lg:pb-0 lg:px-[100px] lg:pt-[56px] py-8 lg:relative lg:top-0 absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
 					>
 						{children}
 					</div>
+					<Footer hidden={asPath === '/success'} isDesktop />
 				</div>
 			</div>
 			<Footer hidden={asPath === '/success'} />

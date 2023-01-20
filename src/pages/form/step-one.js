@@ -9,7 +9,7 @@ export default function stepOne() {
 				title="Personal info"
 				description="Please provide your name, email address, and phone number."
 			/>
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4 lg:gap-6">
 				<TextInput label="Name" />
 				<TextInput label="Email Address" />
 				<TextInput label="Phone Number" />
