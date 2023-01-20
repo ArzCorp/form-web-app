@@ -12,6 +12,10 @@ html {
 	background-size: cover;
 }
 
-.bg-header-desktop {
-	background-image: url('/bg/bg-sidebar-desktop.svg');
+@media screen and (min-width: 1024px) {
+	.bg-header {
+		border-radius: 10px;
+		background-image: url('/bg/bg-sidebar-desktop.svg');
+		background-position: top;
+	}
 }
