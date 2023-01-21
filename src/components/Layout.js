@@ -13,45 +13,51 @@ import {
 
 export default function Layout({ title, children, description }) {
 	const { asPath } = useRouter()
-	const [pageHeight, setPageHeight] = useState(_0)
+	const [pageHeight, setPageHeight] = useState('100vh')
 	const [footerHeight, setFooterHeight] = useState(_0)
 
-	const calculatePageHeight = () => {
+	const setDesktopPageHeight = () => {
 		const headerHeight = document.querySelector('#app-header').clientHeight
 		const footerHeight = document.querySelector('#app-footer').clientHeight
+		const pageWidth = window.innerWidth
 
-		setPageHeight(headerHeight + footerHeight)
+		if (pageWidth >= 1024) return setPageHeight('auto')
+		setPageHeight(`calc(100vh - ${headerHeight + footerHeight}px)`)
 		setFooterHeight(
 			footerHeight + MARGIN_FOOTER_MAIN_PAGE + MARGIN_HEADER_MAIN_PAGE
 		)
 	}
 
 	useEffect(() => {
-		calculatePageHeight()
+		window.addEventListener('resize', setDesktopPageHeight)
+		setDesktopPageHeight()
 	}, [])
 
 	return (
-		<section>
+		<section className="lg:bg-very-light-grey lg:min-h-screen lg:flex items-center">
 			<Head>
 				<title>{title}</title>
 				<meta name="description" content={description} />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.png" />
 			</Head>
-			<Header />
-			<div
-				className="bg-light relative"
-				style={{
-					minHeight: `calc(100vh - ${pageHeight}px)`,
-				}}
-			>
+			<div className="lg:flex lg:h-screen lg:w-full lg:max-w-[940px] lg:max-h-[600px] lg:my-auto lg:mx-auto">
+				<Header />
 				<div
+					className="bg-light lg:bg-white relative lg:w-full lg:h-auto lg:rounded-tr-[15px] lg:rounded-br-[15px]"
 					style={{
-						maxHeight: `calc(100vh - ${footerHeight}px)`,
+						minHeight: pageHeight,
 					}}
-					className="bg-white mx-4 px-6 py-8 absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
 				>
-					{children}
+					<div
+						style={{
+							maxHeight: `calc(100vh - ${footerHeight}px)`,
+						}}
+						className="bg-white lg:ml-0 mx-4 px-6 lg:pb-0 lg:px-[100px] lg:pt-[56px] py-8 lg:relative lg:top-0 absolute left-0 right-0 top-[-75px] rounded-[10px] overflow-x-auto"
+					>
+						{children}
+					</div>
+					<Footer hidden={asPath === '/success'} isDesktop />
 				</div>
 			</div>
 			<Footer hidden={asPath === '/success'} />

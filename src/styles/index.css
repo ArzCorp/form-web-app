@@ -2,6 +2,24 @@ html {
 	font-family: 'Ubuntu', sans-serif;
 }
 
+input {
+	outline: none;
+}
+
+input:focus {
+	outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
 .h-main {
 	min-height: calc(100vh - 172px);
 }
@@ -10,4 +28,12 @@ html {
 	background-image: url('/bg/bg-sidebar-mobile.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+@media screen and (min-width: 1024px) {
+	.bg-header {
+		border-radius: 10px;
+		background-image: url('/bg/bg-sidebar-desktop.svg');
+		background-position: top;
+	}
 }
