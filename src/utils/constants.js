@@ -45,18 +45,21 @@ export const PAGES = [
 
 export const PLANS = [
 	{
+		freetrail: '2 months',
 		id: 1,
 		title: 'Arcade',
 		price: '$9/mo',
 		icon: '/icons/icon-arcade.svg',
 	},
 	{
+		freetrail: '2 months',
 		id: 2,
 		title: 'Advanced',
 		price: '$12/mo',
 		icon: '/icons/icon-advanced.svg',
 	},
 	{
+		freetrail: '2 months',
 		id: 3,
 		title: 'Pro',
 		price: '$15/mo',
