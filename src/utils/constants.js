@@ -2,10 +2,19 @@ export const EMPTY_STRING = ''
 export const TRUE = true
 export const FALSE = false
 export const NULL = null
+export const EMPTY_FUNCTION = () => {}
 export const _0 = 0
 
 export const MARGIN_FOOTER_MAIN_PAGE = 24
 export const MARGIN_HEADER_MAIN_PAGE = 99
+
+export const INPUT_TYPE_NUMBER = 'number'
+export const INPUT_TYPE_EMAIL = 'email'
+export const INPUT_TYPE_PASSWORD = 'password'
+
+export const WRONG_EMAIL_FORMAT_MESSAGE = 'Formato incorrecto'
+export const WRONG_PHONE_NUMBER_FORMAT_MESSAGE =
+	'El número debe tener 10 dígitos'
 
 export const PAGES = [
 	{

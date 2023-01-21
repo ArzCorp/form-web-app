@@ -2,6 +2,24 @@ html {
 	font-family: 'Ubuntu', sans-serif;
 }
 
+input {
+	outline: none;
+}
+
+input:focus {
+	outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
 .h-main {
 	min-height: calc(100vh - 172px);
 }
