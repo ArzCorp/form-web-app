@@ -6,6 +6,7 @@ export default function Plan({
 	icon,
 	freetrail,
 	isActive,
+	planTypeShortName = 'mo',
 	onClick,
 	id,
 }) {
@@ -31,9 +32,9 @@ export default function Plan({
 				<h2 className="font-medium mb-[7px] lg:text-body-xl lg:leading-[18.38px]">
 					{title}
 				</h2>
-				<p className="text-grey text-body-m leading-[20px]">{price}</p>
+				<p className="text-grey text-body-m leading-[20px]">{`${price}/${planTypeShortName}`}</p>
 				<p className="text-body-s leading-[13px] mt-[6px] hidden lg:block">
-					{freetrail}
+					{freetrail} free
 				</p>
 			</div>
 		</article>

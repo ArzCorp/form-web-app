@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react'
 export const usePlanData = () => {
 	const [planData, setPlanData] = useState({})
 
-	const addNewPlanData = ({ name, value }) => {
+	const addNewPlanData = (newValues) => {
 		window.localStorage.setItem(
 			'data_plan',
 			JSON.stringify({
 				...planData,
-				[name]: value,
+				...newValues,
 			})
 		)
 
 		setPlanData({
 			...planData,
-			[name]: value,
+			...newValues,
 		})
 	}
 
