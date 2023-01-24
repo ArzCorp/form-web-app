@@ -4,7 +4,7 @@ import { NULL, PAGES, _0 } from 'utils/constants'
 import Button from 'components/Button'
 import { useEffect, useState } from 'react'
 
-export default function Footer({ hidden, isDesktop }) {
+export default function Footer({ hidden, isDesktop, onClickNextPage }) {
 	const [nextPage, setNextPage] = useState(_0)
 	const { pathname, back, push } = useRouter()
 	const isFirstPage = pathname === '/form/step-one'
@@ -24,6 +24,7 @@ export default function Footer({ hidden, isDesktop }) {
 
 	const moveToNextPage = () => {
 		push(nextPage)
+		onClickNextPage()
 	}
 
 	const moveToConfirm = () => {

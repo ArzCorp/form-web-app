@@ -2,11 +2,14 @@ import Layout from 'components/Layout'
 import Plan from 'components/Plan'
 import StepLayout from 'components/StepLayout'
 import Toggle from 'components/Toggle'
-import { useState } from 'react'
+import { usePlanData } from 'hooks/usePlanData'
+import { useEffect, useState } from 'react'
 import { FALSE, PLANS } from 'utils/constants'
 
 export default function StepTwo() {
+	const { addNewPlanData, planData } = usePlanData()
 	const [paymentFrequency, setPaymentFrequency] = useState(FALSE)
+
 	const [selectedPlan, setSelectedPlan] = useState({})
 
 	const paymentYearly = paymentFrequency
@@ -17,7 +20,19 @@ export default function StepTwo() {
 	const handlePaymentFrequency = (e) => {
 		const { value } = e.target
 		setPaymentFrequency(value)
+		const planTypeName = value ? 'Yearly' : 'Monthly'
+		const planTypeShortName = value ? 'yer' : 'mo'
+
+		addNewPlanData({
+			planTypeName: planTypeName,
+			planTypeShortName: planTypeShortName,
+		})
 	}
+
+	useEffect(() => {
+		const isPlanTypeYearly = planData?.planTypeShortName === 'yer'
+		setPaymentFrequency(isPlanTypeYearly)
+	}, [planData])
 
 	return (
 		<Layout title="Form | Step - Two">
@@ -32,12 +47,16 @@ export default function StepTwo() {
 						{...plan}
 						onClick={setSelectedPlan}
 						isActive={selectedPlan.id === plan.id}
+						{...planData}
 					/>
 				))}
 			</div>
 			<div className="mt-6 p-3 bg-very-light-grey rounded-lg flex items-center justify-center gap-6 text-body-m font-medium leading-[16px] text-grey">
 				<p className={activePaymentMonthlyStyles}>Monthly</p>
-				<Toggle onClick={handlePaymentFrequency} />
+				<Toggle
+					onClick={handlePaymentFrequency}
+					defaultValue={paymentFrequency}
+				/>
 				<p className={activePaymentYearlyStyles}>Yearly</p>
 			</div>
 		</Layout>

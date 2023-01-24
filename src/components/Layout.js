@@ -5,13 +5,19 @@ import Header from './Header'
 import Footer from './Footer'
 
 import {
+	EMPTY_FUNCTION,
 	MARGIN_FOOTER_MAIN_PAGE,
 	MARGIN_HEADER_MAIN_PAGE,
 	NULL,
 	_0,
 } from 'utils/constants'
 
-export default function Layout({ title, children, description }) {
+export default function Layout({
+	title,
+	children,
+	description,
+	onClickNextPage = EMPTY_FUNCTION,
+}) {
 	const { asPath } = useRouter()
 	const [pageHeight, setPageHeight] = useState('100vh')
 	const [footerHeight, setFooterHeight] = useState(_0)
@@ -57,10 +63,17 @@ export default function Layout({ title, children, description }) {
 					>
 						{children}
 					</div>
-					<Footer hidden={asPath === '/success'} isDesktop />
+					<Footer
+						onClickNextPage={onClickNextPage}
+						hidden={asPath === '/success'}
+						isDesktop
+					/>
 				</div>
 			</div>
-			<Footer hidden={asPath === '/success'} />
+			<Footer
+				onClickNextPage={onClickNextPage}
+				hidden={asPath === '/success'}
+			/>
 		</section>
 	)
 }
