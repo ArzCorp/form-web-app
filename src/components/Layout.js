@@ -9,6 +9,7 @@ import {
 	MARGIN_FOOTER_MAIN_PAGE,
 	MARGIN_HEADER_MAIN_PAGE,
 	NULL,
+	SUCCESS_PAGE,
 	_0,
 } from 'utils/constants'
 
@@ -65,14 +66,14 @@ export default function Layout({
 					</div>
 					<Footer
 						onClickNextPage={onClickNextPage}
-						hidden={asPath === '/success'}
+						hidden={asPath === SUCCESS_PAGE}
 						isDesktop
 					/>
 				</div>
 			</div>
 			<Footer
 				onClickNextPage={onClickNextPage}
-				hidden={asPath === '/success'}
+				hidden={asPath === SUCCESS_PAGE}
 			/>
 		</section>
 	)
