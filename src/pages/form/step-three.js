@@ -12,7 +12,7 @@ export default function stepThree() {
 			/>
 			<div className="flex flex-col gap-3">
 				{ADDONS.map((additional) => (
-					<Checkbox key={additional.key} {...additional} />
+					<Checkbox key={additional.id} {...additional} />
 				))}
 			</div>
 		</Layout>

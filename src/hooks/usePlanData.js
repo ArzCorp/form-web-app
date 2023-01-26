@@ -21,7 +21,7 @@ export const usePlanData = () => {
 	useEffect(() => {
 		if (window) {
 			const data = window.localStorage.getItem('data_plan')
-			setPlanData(JSON.parse(data))
+			if (data) setPlanData(JSON.parse(data))
 		}
 	}, [])
 
